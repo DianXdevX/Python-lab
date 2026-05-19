@@ -40,8 +40,11 @@ def menu():
             continue
         if opition  == 1:
             print("Você escolheu Listar.") #
+            lista_tarefas(task_list) 
         elif opition  == 2:
             print("Você escolheu Adicionar.") 
+            adicionar_tarefas(task_list)
+
         elif opition  == 3:
             print("Você escolheu Concluir.") 
         elif opition  == 4:
@@ -49,4 +52,39 @@ def menu():
         elif opition  == 5:
             print("Saindo do programa... Até logo!")
             break  # Comando essencial: quebra o while True
-menu()  #executa o menu 
+
+def lista_tarefas(task_list): 
+    print("\n--- YOUR TASKS ---")
+    if not task_list:
+        print("Ainda nao possui lista ")
+        return 
+    for task in task_list:
+        if task["concluido"] == True:
+            status = "[x]"
+        else:
+            status = "[]"
+        print(f"ID: {task['id']} | {status} {task['titulo']}")
+
+
+def adicionar_tarefas(task_list):
+    tarefa_name = input("\nDigite o nome da tarefa: ")
+    if not task_list:
+        new_id = 1
+    else:
+        new_id =len(task_list)+1
+    new_tarefa = {
+        "id": new_id,
+        "titulo": tarefa_name,
+        "concluido" :False
+    }
+    task_list.append(new_tarefa) #apped  e adicionar a lista 
+    save_task(task_list)
+    print(f"Tarefa '{tarefa_name}' salva com sucesso.")
+    #o f serve para ler a variavel pelo que entendi 
+
+menu()  
+#executa o menu 
+
+
+       
+         
