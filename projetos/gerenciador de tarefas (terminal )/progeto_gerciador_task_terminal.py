@@ -27,12 +27,14 @@ def menu():
     task_list =Load_task()
     while True:
         print("\n--- GERENCIADOR DE TAREFAS ---")
+        print("\n")
         print("1. Listar tarefas")
         print("2. Adicionar tarefa")
         print("3. Marcar como concluída")
         print("4. Excluir tarefa")
-        print("5. Sair")
-           #configura o menu 
+        print("5. Sair /n")
+        print("Diana dev industries  kupo ><")
+        #configura o menu 
         try:
          opition = int(input("\nEscolha uma opção:"))
         except ValueError:
@@ -47,10 +49,13 @@ def menu():
 
         elif opition  == 3:
             print("Você escolheu Concluir.") 
+            Marcar_como_concluída(task_list)
         elif opition  == 4:
             print("Você escolheu Excluir.") 
+            deletar_tarefa(task_list)
         elif opition  == 5:
             print("Saindo do programa... Até logo!")
+            
             break  # Comando essencial: quebra o while True
 
 def lista_tarefas(task_list): 
@@ -81,6 +86,51 @@ def adicionar_tarefas(task_list):
     save_task(task_list)
     print(f"Tarefa '{tarefa_name}' salva com sucesso.")
     #o f serve para ler a variavel pelo que entendi 
+
+def Marcar_como_concluída(task_list):
+    lista_tarefas(task_list)
+    if not task_list:
+        return
+    try:
+        id_alvo = int(input("\nDigite o ID da tarefa que deseja concluir: "))
+    except ValueError:
+        print("Erro crítico: Você deve digitar um número inteiro.")
+        return # Exits the function if the input is invalid
+    task_encontrada = False
+    for task in task_list: #se a tarefa estiver na lista
+        if task["id"] == id_alvo: # e o id for igual ao  id salvo 
+            task["concluido"] = True # muda o status para verdade ou melhor concluida
+            task_encontrada = True 
+            print(f"Sucesso! A tarefa '{task['titulo']}' foi marcada como [x].")
+            break
+    if not task_encontrada:
+        print(f"Falha: Nenhuma tarefa encontrada com o ID {id_alvo}.")
+    save_task(task_list)  #salva a lista com as ateraçoes
+
+def deletar_tarefa(task_list):
+    lista_tarefas(task_list)
+    try:
+        id_alvo = int(input("\nDigite o ID da tarefa que deseja excluir: "))
+    except ValueError:
+        print("Erro crítico: Você deve digitar um número inteiro.")
+        return
+
+    task_encontrada = False
+    
+
+    for task in task_list:
+        if task["id"] == id_alvo:
+            task_list.remove(task)  # Remove o dicionário inteiro da lista
+            task_encontrada = True
+            print(f"Sucesso! A tarefa '{task['titulo']}' foi excluída.")
+            break  # Interrompe o loop pois o elemento já foi removido
+            
+    if not task_encontrada:
+        print(f"Falha: Nenhuma tarefa encontrada com o ID {id_alvo}.")
+        
+    # 4. Sincronização com o armazenamento persistente
+    save_task(task_list)
+
 
 menu()  
 #executa o menu 
