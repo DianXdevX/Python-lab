@@ -23,8 +23,8 @@ O repositório está organizado de forma clara para acompanhar minha evolução:
 
 ---
 🔗 Repositórios Relacionados
+*   **https://github.com/DianXdevX/DIO-_Detec-o-_-Anomalias-_Transa-es-em-Python**: (Detecção de Anomalias em Transações Financeiras: Projeto de Machine Learning desenvolvido em Python, com carregamento de dados, pré-processamento, balanceamento com undersampling, criação de cópia dos dados para preservar o dataset original, treinamento de modelos e avaliação com métricas como curva ROC, AUC e Precision-Recall.)
 
--https://github.com/DianXdevX/DIO-_Detec-o-_-Anomalias-_Transa-es-em-Python (Detecção de Anomalias em Transações Financeiras: Projeto de Machine Learning desenvolvido em Python, com carregamento de dados, pré-processamento, balanceamento com undersampling, criação de cópia dos dados para preservar o dataset original, treinamento de modelos e avaliação com métricas como curva ROC, AUC e Precision-Recall.)
 (
 
 kupo >< 
